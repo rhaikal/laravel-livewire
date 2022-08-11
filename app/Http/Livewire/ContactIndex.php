@@ -11,7 +11,11 @@ class ContactIndex extends Component
 
     public $statusUpdate = false;
 
-    protected $listeners = ['contactStored' => 'handleStored'];
+    protected $listeners = [
+        'contactStored' => 'handleStored',
+        'contactUpdated' => 'handleUpdated',
+
+    ];
 
     public function render()
     {
@@ -32,5 +36,11 @@ class ContactIndex extends Component
     {
         // dd($contact);
         session()->flash('message', 'Contact ' . $contact['name'] . ' was stored!');
+    }
+
+    public function handleUpdated($contact)
+    {
+        // dd($contact);
+        session()->flash('message', 'Contact ' . $contact['name'] . ' was updated!');
     }
 }

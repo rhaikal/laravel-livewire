@@ -5,11 +5,13 @@
         </div>
     @endif
 
-    @if ($statusUpdate)   
-        <livewire:contact-update />
-    @else
-        <livewire:contact-create />
-    @endif
+    <div>
+        @if ($statusUpdate)   
+            <livewire:contact-update />
+        @else
+            <livewire:contact-create />
+        @endif
+    </div>
 
     <hr>
 
