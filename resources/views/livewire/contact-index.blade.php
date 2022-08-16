@@ -16,12 +16,15 @@
     <hr>
 
     <div class="row">
-        <div class="col">
+        <div class="col-1">
             <select wire:model="paginate" name="" id="" class="form-control form-control-sm w-auto">
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="15">15</option>
             </select>
+        </div>
+        <div class="col-11">
+            <input wire:model="search" type="text" class="form-control form-control-sm" placeholder="Search">
         </div>
     </div>
 

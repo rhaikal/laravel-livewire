@@ -13,6 +13,7 @@ class ContactIndex extends Component
 
     public $statusUpdate = false;
     public $paginate = 5;
+    public $search;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -22,11 +23,25 @@ class ContactIndex extends Component
 
     ];
 
+    protected $queryString = ['search' => ['except' => '']];
+
+    public function updatingPaginate()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         // $this->data = Contact::latest()->get();
         return view('livewire.contact-index', [
-            'contacts' => Contact::latest()->paginate($this->paginate)
+            'contacts' => $this->search === null ?
+                Contact::latest()->paginate($this->paginate) :
+                Contact::latest()->where('name', 'like', '%' . $this->search . '%')->paginate($this->paginate)
         ]);
     }
 
